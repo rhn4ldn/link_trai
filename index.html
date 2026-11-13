@@ -91,7 +91,7 @@
             <h3>Starter</h3><div class="price">Rp 75.000</div>
             <p class="desc">Cocok untuk acara atau promosi singkat.</p>
             <ul><li>1 halaman sederhana</li><li>Desain responsif</li><li>Tombol WhatsApp</li><li>Revisi 1x</li><li>Selesai 2–3 hari</li></ul>
-            <button type="button" class="btn btn-wa btn-sm package-button" data-package="Starter"><i data-lucide="send"></i> Pesan Paket Ini</button>
+            <button type="button" class="btn btn-primary btn-sm package-detail-button" data-package="starter"><i data-lucide="file-text"></i> Lihat Detail Paket</button>
           </article>
 
           <article class="price-card popular">
@@ -99,21 +99,21 @@
             <h3>Bisnis</h3><div class="price">Rp 125.000</div>
             <p class="desc">Paling cocok untuk UMKM dan usaha kecil.</p>
             <ul><li>1 halaman lengkap</li><li>Form kontak + tombol WA</li><li>Optimasi mobile</li><li>Revisi 2x</li><li>Selesai 3–4 hari</li></ul>
-            <button type="button" class="btn btn-wa btn-sm package-button" data-package="Bisnis"><i data-lucide="send"></i> Pesan Paket Ini</button>
+            <button type="button" class="btn btn-primary btn-sm package-detail-button" data-package="bisnis"><i data-lucide="file-text"></i> Lihat Detail Paket</button>
           </article>
 
           <article class="price-card">
             <h3>Premium</h3><div class="price">Rp 200.000</div>
             <p class="desc">Untuk tampilan yang lebih menarik dan lengkap.</p>
             <ul><li>Multi-section + animasi ringan</li><li>Optimasi kecepatan</li><li>Custom warna &amp; font</li><li>Revisi 3x</li><li>Selesai 5–6 hari</li></ul>
-            <button type="button" class="btn btn-wa btn-sm package-button" data-package="Premium"><i data-lucide="send"></i> Pesan Paket Ini</button>
+            <button type="button" class="btn btn-primary btn-sm package-detail-button" data-package="premium"><i data-lucide="file-text"></i> Lihat Detail Paket</button>
           </article>
 
           <article class="price-card">
             <h3>Pro</h3><div class="price">Rp 300.000<span>+</span></div>
             <p class="desc">Untuk kebutuhan khusus dan custom penuh.</p>
             <ul><li>Fully custom sesuai brief</li><li>Konsultasi mendalam</li><li>Prioritas pengerjaan</li><li>Revisi sesuai kesepakatan</li><li>Timeline menyesuaikan</li></ul>
-            <button type="button" class="btn btn-wa btn-sm package-button" data-package="Pro"><i data-lucide="messages-square"></i> Konsultasi Dulu</button>
+            <button type="button" class="btn btn-primary btn-sm package-detail-button" data-package="pro"><i data-lucide="file-text"></i> Lihat Detail Paket</button>
           </article>
         </div>
       </div>
@@ -157,6 +157,40 @@
         <button type="button" class="btn btn-outline" data-close-modal>Batal</button>
         <button type="button" class="btn btn-primary" id="confirm-whatsapp"><i data-lucide="check"></i> Ya, Lanjutkan</button>
       </div>
+    </section>
+  </div>
+
+  <!-- Modal detail paket -->
+  <div class="modal package-modal" id="package-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-package-modal></div>
+    <section class="package-dialog" role="dialog" aria-modal="true" aria-labelledby="package-modal-title" aria-describedby="package-modal-description" tabindex="-1">
+      <header class="package-dialog-header">
+        <span class="package-eyebrow">Detail Paket</span>
+        <h2 id="package-modal-title">Starter</h2>
+        <p id="package-modal-description">Cocok untuk acara atau promosi singkat.</p>
+        <button class="modal-close package-close" type="button" aria-label="Tutup detail paket" data-close-package-modal><i data-lucide="x"></i></button>
+      </header>
+      <div class="package-price-panel">
+        <div>
+          <span class="package-price-label">Harga paket</span>
+          <div class="package-price" id="package-modal-price">Rp 75.000</div>
+        </div>
+        <span class="package-timeline" id="package-modal-timeline">Estimasi pengerjaan 2–3 hari</span>
+      </div>
+      <div class="package-dialog-body">
+        <h3 class="package-section-title">Detail Fasilitas</h3>
+        <dl class="package-specs" id="package-modal-specs"></dl>
+        <h3 class="package-section-title">Yang Kamu Dapatkan</h3>
+        <ul class="package-features" id="package-modal-features"></ul>
+        <p class="package-disclaimer">Status “Perlu konfirmasi” berarti ketentuan belum tercantum pada paket dan akan dijelaskan saat konsultasi.</p>
+      </div>
+      <footer class="package-dialog-footer">
+        <p class="package-footer-note">Kamu akan diarahkan ke WhatsApp dengan pesan siap kirim.</p>
+        <div class="package-actions">
+          <button type="button" class="btn btn-primary" id="package-order-button"><i data-lucide="message-circle"></i> Pesan Paket Ini</button>
+          <button type="button" class="btn btn-outline" data-close-package-modal>Kembali</button>
+        </div>
+      </footer>
     </section>
   </div>
 </body>
