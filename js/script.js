@@ -345,6 +345,142 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+const portfolioGrid = document.getElementById("portfolio-grid");
+const portfolioToggle = document.getElementById("portfolio-toggle");
+const portfolioToggleLabel = portfolioToggle
+  ? portfolioToggle.querySelector(".portfolio-toggle-label")
+  : null;
+const PORTFOLIO_INITIAL_COUNT = 4;
+
+if (portfolioGrid && portfolioToggle && portfolioToggleLabel) {
+  const portfolioItems = Array.from(portfolioGrid.querySelectorAll(".portfolio-item"));
+  const hasAdditionalPortfolio = portfolioItems.length > PORTFOLIO_INITIAL_COUNT;
+
+  if (hasAdditionalPortfolio) {
+    portfolioToggle.hidden = false;
+
+    portfolioToggle.addEventListener("click", () => {
+      const isExpanded = portfolioGrid.classList.toggle("is-expanded");
+      portfolioToggle.setAttribute("aria-expanded", String(isExpanded));
+      portfolioToggleLabel.textContent = isExpanded ? "Tampilkan Lebih Sedikit" : "Lihat Semua";
+
+      if (!isExpanded) {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        requestAnimationFrame(() => {
+          portfolioToggle.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "nearest"
+          });
+        });
+      }
+    });
+  }
+}
+
+const navbar = document.querySelector(".navbar");
+const navLinksContainer = document.querySelector(".nav-links");
+const navIndicator = navLinksContainer
+  ? navLinksContainer.querySelector(".nav-indicator")
+  : null;
+const navSectionLinks = navLinksContainer
+  ? Array.from(navLinksContainer.querySelectorAll('a[href^="#"]:not(.btn)'))
+      .map((link) => {
+        const section = document.querySelector(link.getAttribute("href"));
+        return section ? { link, section } : null;
+      })
+      .filter(Boolean)
+  : [];
+
+if (navbar && navLinksContainer && navIndicator && navSectionLinks.length) {
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let activeNavLink = null;
+  let navUpdateFrame = 0;
+  let navResizeTimer = 0;
+
+  function getNavActivationLine() {
+    const navbarHeight = navbar.getBoundingClientRect().height;
+    const scrollPadding =
+      parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    return Math.max(navbarHeight, scrollPadding) + 8;
+  }
+
+  function positionNavIndicator() {
+    if (!activeNavLink) {
+      navIndicator.style.opacity = "0";
+      return;
+    }
+
+    const offsetTop = activeNavLink.offsetTop + activeNavLink.offsetHeight + 4;
+    navIndicator.style.transform = `translate3d(${activeNavLink.offsetLeft}px, ${offsetTop}px, 0) scaleX(${activeNavLink.offsetWidth})`;
+    navIndicator.style.opacity = "1";
+  }
+
+  function ensureActiveNavLinkVisible(link) {
+    if (navLinksContainer.scrollWidth <= navLinksContainer.clientWidth + 1) return;
+
+    const padding = 24;
+    const linkLeft = link.offsetLeft;
+    const linkRight = linkLeft + link.offsetWidth;
+    const visibleLeft = navLinksContainer.scrollLeft;
+    const visibleRight = visibleLeft + navLinksContainer.clientWidth;
+
+    if (linkLeft < visibleLeft || linkRight > visibleRight) {
+      navLinksContainer.scrollTo({
+        left: Math.max(0, linkLeft - padding),
+        behavior: reducedMotionQuery.matches ? "auto" : "smooth"
+      });
+    }
+  }
+
+  function setActiveNavLink(link) {
+    if (!link || link === activeNavLink) return;
+
+    if (activeNavLink) activeNavLink.removeAttribute("aria-current");
+    activeNavLink = link;
+    activeNavLink.setAttribute("aria-current", "location");
+    positionNavIndicator();
+    ensureActiveNavLinkVisible(activeNavLink);
+  }
+
+  function updateActiveNav() {
+    const activationLine = getNavActivationLine();
+    let current = navSectionLinks[0];
+
+    navSectionLinks.forEach((item) => {
+      if (item.section.getBoundingClientRect().top <= activationLine) {
+        current = item;
+      }
+    });
+
+    setActiveNavLink(current.link);
+  }
+
+  function requestNavUpdate() {
+    if (navUpdateFrame) return;
+    navUpdateFrame = requestAnimationFrame(() => {
+      navUpdateFrame = 0;
+      updateActiveNav();
+    });
+  }
+
+  window.addEventListener("scroll", requestNavUpdate, { passive: true });
+
+  window.addEventListener("resize", () => {
+    window.clearTimeout(navResizeTimer);
+    navResizeTimer = window.setTimeout(() => {
+      updateActiveNav();
+      positionNavIndicator();
+    }, 120);
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(positionNavIndicator);
+  }
+
+  updateActiveNav();
+  positionNavIndicator();
+}
+
 const yearElement = document.getElementById("current-year");
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();

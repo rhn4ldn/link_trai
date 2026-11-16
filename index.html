@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jasa pembuatan landing page profesional untuk UMKM, acara, dan bisnis. Cepat, responsif, dan siap pakai." />
+  <meta name="description" content="Jasa pembuatan landing page profesional untuk UMKM, acara, dan bisnis. Cepat, responsif, dan siap pakai. Lihat portfolio website kami." />
   <meta name="theme-color" content="#5D866C" />
   <title>LinkTrai — Jasa Pembuatan Landing Page Profesional</title>
 
@@ -17,10 +17,12 @@
 <body>
   <nav class="navbar" aria-label="Navigasi utama">
     <div class="container nav-content">
-      <a href="#" class="logo" aria-label="LinkTrai, beranda">Link<span>Trai</span></a>
+      <a href="#beranda" class="logo" aria-label="LinkTrai, beranda">Link<span>Trai</span></a>
       <div class="nav-links">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <a href="#beranda" aria-current="location">Beranda</a>
         <a href="#keunggulan">Keunggulan</a>
-        <a href="#portfolio">Contoh Hasil</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#paket">Paket</a>
         <a href="#cara-kerja">Cara Kerja</a>
         <a href="#paket" class="btn btn-primary btn-sm">Lihat Paket <i data-lucide="arrow-right"></i></a>
@@ -29,7 +31,7 @@
   </nav>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="beranda">
       <div class="container hero-content">
         <div class="hero-text">
           <div class="hero-badge"><i data-lucide="rocket"></i> Jasa Landing Page Profesional</div>
@@ -37,7 +39,7 @@
           <p>Kami bantu UMKM, acara, dan bisnis punya halaman promosi yang cepat, responsif, dan siap menerima pelanggan dari WhatsApp.</p>
           <div class="hero-btns">
             <a href="#paket" class="btn btn-primary">Lihat Paket Harga <i data-lucide="arrow-right"></i></a>
-            <a href="#portfolio" class="btn btn-outline"><i data-lucide="image"></i> Lihat Contoh Hasil</a>
+            <a href="#portfolio" class="btn btn-outline"><i data-lucide="image"></i> Lihat Portfolio</a>
           </div>
         </div>
         <div class="hero-image">
@@ -66,16 +68,172 @@
     <section id="portfolio">
       <div class="container">
         <div class="section-header">
-          <h2>Contoh Hasil Kerja</h2>
-          <p>Contoh konsep landing page. Desain akhir dapat disesuaikan dengan kebutuhan bisnismu.</p>
+          <h2>Portfolio</h2>
+          <p>Lihat portfolio website yang telah kami buat. Setiap desain dirancang sesuai kebutuhan dan karakter bisnis masing-masing.</p>
         </div>
-        <div class="portfolio-grid">
-          <article class="portfolio-item"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=700&h=450&fit=crop" alt="Tim UMKM sedang berdiskusi" loading="lazy"><div class="portfolio-overlay"><span>Landing Page UMKM</span></div></article>
-          <article class="portfolio-item"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=700&h=450&fit=crop" alt="Tim bekerja pada proyek digital" loading="lazy"><div class="portfolio-overlay"><span>Promosi Acara</span></div></article>
-          <article class="portfolio-item"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=450&fit=crop" alt="Dashboard website" loading="lazy"><div class="portfolio-overlay"><span>Jasa Profesional</span></div></article>
-          <article class="portfolio-item"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=450&fit=crop" alt="Transaksi belanja online" loading="lazy"><div class="portfolio-overlay"><span>Produk Digital</span></div></article>
-          <article class="portfolio-item"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700&h=450&fit=crop" alt="Kolaborasi kelas dan bisnis" loading="lazy"><div class="portfolio-overlay"><span>Kelas Online</span></div></article>
-          <article class="portfolio-item"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&h=450&fit=crop" alt="Diskusi konsultasi tim" loading="lazy"><div class="portfolio-overlay"><span>Konsultasi</span></div></article>
+
+        <!--
+          CARA MENGEDIT PORTFOLIO
+          1. Nama/kategori : ubah teks di dalam <span class="portfolio-category">.
+          2. Gambar        : ganti atribut src dengan screenshot Anda, misalnya assets/portfolio/nama-file.jpg.
+                             Disarankan memakai rasio 16:9 (contoh 1600 x 900 piksel) agar tampilan konsisten.
+          3. Link website  : ganti atribut href dengan URL tujuan, misalnya https://nama-website.com.
+          Empat kartu pertama tampil di beranda. Kartu kelima dan seterusnya otomatis
+          disembunyikan sampai tombol "Lihat Semua" diklik.
+          Untuk menambah portfolio baru, salin satu <article class="portfolio-item"> di bawah.
+        -->
+        <div class="portfolio-grid" id="portfolio-grid">
+          <!-- Portfolio 1 — Crumbs & Co (toko kue) -->
+          <article class="portfolio-item is-linked">
+            <a
+              class="portfolio-link"
+              href="https://crumbsco.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Kunjungi website Crumbs & Co, toko kue (buka di tab baru)"
+            >
+              <img
+                src="assets/portfolio/sscc.jpeg"
+                alt="Preview website toko kue Crumbs & Co"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="portfolio-overlay">
+                <span class="portfolio-category">Crumbs &amp; Co — Toko Kue</span>
+                <span class="portfolio-visit-btn" aria-hidden="true">
+                  Kunjungi Website
+                  <i data-lucide="external-link"></i>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Portfolio 2 — Maison de Fleur (florist) -->
+          <article class="portfolio-item is-linked">
+            <a
+              class="portfolio-link"
+              href="https://maisondefleur.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Kunjungi website Maison de Fleur, florist (buka di tab baru)"
+            >
+              <img
+                src="assets/portfolio/ssflo.jpeg"
+                alt="Preview website florist Maison de Fleur"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="portfolio-overlay">
+                <span class="portfolio-category">Maison de Fleur — Florist</span>
+                <span class="portfolio-visit-btn" aria-hidden="true">
+                  Kunjungi Website
+                  <i data-lucide="external-link"></i>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Portfolio 3 — Star Clean (laundry) -->
+          <article class="portfolio-item is-linked">
+            <a
+              class="portfolio-link"
+              href="https://freshfoldr.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Kunjungi website Star Clean, laundry (buka di tab baru)"
+            >
+              <img
+                src="assets/portfolio/sslaundry.jpg"
+                alt="Preview website laundry Star Clean"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="portfolio-overlay">
+                <span class="portfolio-category">Star Clean — Laundry</span>
+                <span class="portfolio-visit-btn" aria-hidden="true">
+                  Kunjungi Website
+                  <i data-lucide="external-link"></i>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Portfolio 4 — Kopi Senja (kedai kopi) -->
+          <article class="portfolio-item is-linked">
+            <a
+              class="portfolio-link"
+              href="https://kosenja.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Kunjungi website Kopi Senja, kedai kopi (buka di tab baru)"
+            >
+              <img
+                src="assets/portfolio/sskopi.jpg"
+                alt="Preview website kedai kopi Kopi Senja"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="portfolio-overlay">
+                <span class="portfolio-category">Kopi Senja — Kedai Kopi</span>
+                <span class="portfolio-visit-btn" aria-hidden="true">
+                  Kunjungi Website
+                  <i data-lucide="external-link"></i>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!--
+            Placeholder 5 — belum memiliki URL.
+            Untuk mengaktifkan: ganti class article menjadi "portfolio-item is-linked",
+            lalu bungkus <img> dan .portfolio-overlay dengan
+            <a class="portfolio-link" href="URL_WEBSITE" target="_blank" rel="noopener noreferrer">.
+          -->
+          <article class="portfolio-item is-placeholder">
+            <img
+              src="assets/portfolio/GANTI-GAMBAR-5.jpg"
+              alt="Placeholder portfolio 5, ganti dengan screenshot website"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="portfolio-overlay">
+              <span class="portfolio-category">Portfolio Baru</span>
+              <span class="portfolio-visit-btn portfolio-visit-btn-disabled" aria-hidden="true">Segera Hadir</span>
+            </div>
+          </article>
+
+          <!--
+            Placeholder 6 — belum memiliki URL.
+            Untuk mengaktifkan: ganti class article menjadi "portfolio-item is-linked",
+            lalu bungkus <img> dan .portfolio-overlay dengan
+            <a class="portfolio-link" href="URL_WEBSITE" target="_blank" rel="noopener noreferrer">.
+          -->
+          <article class="portfolio-item is-placeholder">
+            <img
+              src="assets/portfolio/GANTI-GAMBAR-6.jpg"
+              alt="Placeholder portfolio 6, ganti dengan screenshot website"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="portfolio-overlay">
+              <span class="portfolio-category">Portfolio Baru</span>
+              <span class="portfolio-visit-btn portfolio-visit-btn-disabled" aria-hidden="true">Segera Hadir</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="portfolio-actions">
+          <button
+            type="button"
+            class="btn btn-outline portfolio-toggle"
+            id="portfolio-toggle"
+            aria-expanded="false"
+            aria-controls="portfolio-grid"
+            hidden
+          >
+            <span class="portfolio-toggle-label">Lihat Semua</span>
+            <i data-lucide="chevron-down" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </section>
