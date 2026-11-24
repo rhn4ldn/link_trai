@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "6289691321070";
+const WHATSAPP_NUMBER = "6287841792932";
 
 if (window.lucide && typeof window.lucide.createIcons === "function") {
   window.lucide.createIcons();
